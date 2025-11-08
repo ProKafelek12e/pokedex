@@ -11,11 +11,13 @@ export default function List({ pokemons }) {
         return (
           <>
             <NavBar view={view} setView={setView} setSearch={setSearch}/>
+            <div className='flex justify-around flex-wrap gap-10 mx-10'>
             {pokemons && pokemons.map((pokemon)=>(
-              (pokemon.name.includes(search)||pokemon.id==parseInt(search))?
+              (pokemon.name.includes(search) || pokemon.id === parseInt(search))?
                 <Card pokemon={pokemon}/>:null
               )
             )} 
+            </div>
           </>
         )
       }
@@ -24,7 +26,7 @@ export default function List({ pokemons }) {
           <>
             <NavBar view={view} setView={setView} setSearch={setSearch}/>
             {pokemons && pokemons.map((pokemon)=>(
-              (pokemon.name.includes(search)||pokemon.id==parseInt(search))?
+              (pokemon.name.includes(search) || pokemon.id === parseInt(search))?
                 <Row pokemon={pokemon}/>:null
               )
             )} 

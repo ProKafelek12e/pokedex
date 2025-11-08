@@ -1,6 +1,7 @@
+import Filter from './filter'
 import ViewModeSwitch from './ViewModeSwitch'
 
-export default function NavBar({ view, setView, setSearch }) {
+export default function NavBar({ view, setView, setSearch, selected, setSelected }) {
   return (
     <header className="w-full flex items-center justify-between gap-4 bg-white/60 backdrop-blur-sm px-4 py-3 rounded-md shadow-sm sticky top-0 z-20">
       <div className="flex items-center gap-3">
@@ -19,6 +20,7 @@ export default function NavBar({ view, setView, setSearch }) {
         </label>
       </div>
 
+        <Filter selected={selected} setSelected={setSelected}/>
       <div className="flex items-center gap-3">
         <ViewModeSwitch view={view} setView={setView} />
       </div>

@@ -13,7 +13,7 @@ export default function NavBar({ view, setView, setSearch }) {
           <input
             type="search"
             placeholder="Search by name or # (e.g. pikachu, 25)"
-            className="w-full pl-10 pr-3 py-2 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:border-transparent placeholder-gray-400 text-sm"
+            className="w-full pl-10 pr-3 py-2 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent placeholder-gray-400 text-sm"
             onChange={(e)=>{setSearch(e.target.value)}}
           />
         </label>

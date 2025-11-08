@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Card from './components/card';
-import Row from './components/row';
-import NavBar from './components/navBar';
+import List from './components/list';
 
 function App() {
   const [pokemons,setPokemons] = useState(null)
-  const [view,setView] = useState('grid')
-  const [search, setSearch] = useState("")
 
   async function getData(){
 
@@ -46,23 +42,9 @@ function App() {
   useEffect(()=>{
     getData()
   },[])
-
-  if(view==='grid')
   return (
     <div className="App flex flex-row flex-wrap justify-between gap-4">
-      <NavBar view={view} setView={setView} setSearch={setSearch}/>
-      {pokemons && pokemons.map((pokemon)=>(
-          <Card pokemon={pokemon}/>
-      ))}
-    </div>
-  );
-  else 
-  return (
-    <div className="App flex flex-row flex-wrap justify-between gap-4">
-      <NavBar view={view} setView={setView}/>
-      {pokemons && pokemons.map((pokemon)=>(
-          <Row pokemon={pokemon}/>
-      ))}
+      <List pokemons={pokemons}/>
     </div>
   );
 }

@@ -13,6 +13,9 @@ export default function Filter({selected = [], setSelected = () => {}}) {
       >
         Filters
       </button>
+      {selected.length>0?
+      <Badge>{selected.length}</Badge>
+      :null}
       <FilterModal visbility={showModal} options={options} CloseModal={()=>{setShowModal(false)}} selected={selected} setSelected={setSelected}/>
     </div>
   )
@@ -54,5 +57,12 @@ function FilterModal({visbility, options, CloseModal, selected = [], setSelected
         </div>
       </div>
     </>
+  )
+}
+function Badge({ children }) {
+  return (
+    <div className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs font-bold shadow">
+      {children}
+    </div>
   )
 }

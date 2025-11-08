@@ -3,8 +3,9 @@ import NavBar from './navBar'
 import Card from './card'
 import Row from './row'
 import NotFound from './notFound'
+import Loading from './loading'
 
-export default function List({ pokemons }) {
+export default function List({ pokemons, loaded }) {
       const [view,setView] = useState('grid')
       const [search, setSearch] = useState("")
       const [selected, setSelected] = useState([])
@@ -26,33 +27,19 @@ export default function List({ pokemons }) {
     })
   }, [pokemons, search, selectedLower])
 
-
-
-      if(view==='grid'){
         return (
           <>
             <NavBar view={view} setView={setView} setSearch={setSearch} selected={selected} setSelected={setSelected}/>
             <div className='flex justify-around flex-wrap gap-10 mx-10'>
-            {filtered && filtered.map((pokemon)=>(
-              ((pokemon.name.includes(search.toLowerCase()) || pokemon.id === parseInt(search)))?
-                <Card key={pokemon.id} pokemon={pokemon}/>:null
+            {filtered && filtered.map((pokemon)=>
+              (view==='grid'?
+                <Card key={pokemon.id} pokemon={pokemon}/>:
+                <Row key={pokemon.id} pokemon={pokemon}/>
               )
             )} 
-            {filtered.length==0?<NotFound/>:null}
+            {loaded===false ? <Loading/> : null}
+            {loaded===true && filtered.length==0?<NotFound/> : null}
             </div>
           </>
         )
-      }
-      else{
-        return (
-          <>
-            <NavBar view={view} setView={setView} setSearch={setSearch}/>
-            {filtered && filtered.map((pokemon)=>(
-              (pokemon.name.includes(search.toLowerCase()) || pokemon.id === parseInt(search))?
-                <Row key={pokemon.id} pokemon={pokemon}/>:null
-              )
-            )} 
-          </>
-        )
-      }
 }

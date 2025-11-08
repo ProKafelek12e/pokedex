@@ -4,6 +4,7 @@ import List from './components/list';
 
 function App() {
   const [pokemons,setPokemons] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   async function getData(){
 
@@ -34,6 +35,7 @@ function App() {
           
         }
         setPokemons(pokemonsArray)
+        setLoading(false)
     }
     catch(error){
         console.log(error)
@@ -44,7 +46,7 @@ function App() {
   },[])
   return (
     <div className="App flex flex-row flex-wrap justify-between gap-4">
-      <List pokemons={pokemons}/>
+      <List pokemons={pokemons} loaded={!loading}/>
     </div>
   );
 }

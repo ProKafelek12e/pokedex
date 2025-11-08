@@ -7,7 +7,6 @@ export default function Card({ pokemon }) {
           className="w-[315px] h-[440px] rounded-xl border-8 border-yellow-300 overflow-hidden"
         >
           <div className="w-full h-full bg-neutral-200 p-4 flex flex-col items-center gap-3">
-            {console.log(pokemon)}
             <img
               src={pokemon.image}
               alt={pokemon.name}

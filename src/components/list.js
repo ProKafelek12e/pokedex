@@ -38,7 +38,7 @@ export default function List({ pokemons, loaded }) {
               )
             )} 
             {loaded===false ? <Loading/> : null}
-            {loaded===true && filtered.length==0?<NotFound/> : null}
+            {loaded===true && filtered.length===0?<NotFound/> : null}
             </div>
           </>
         )
